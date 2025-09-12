@@ -31,9 +31,13 @@ def get_user_expense():
             "💼 Work",
             "🦷 Misc"
         ]
-        index = len(expense_category)
-        print(f"Categories: {expense_category}")
+        #create a index for the list, good for visual effect
+        for i, food in enumerate(expense_category):
+            print(food)
         
+        index = len(expense_category)
+        print(index)
+        #len puts it at 1-5 so we - 1 later to fix the input since enumerate only does 0-4
         selected_index = int(input(f'Pick the Category this goes under: [1 - {index}]: ')) - 1
         selected_category = expense_category[selected_index]
 
