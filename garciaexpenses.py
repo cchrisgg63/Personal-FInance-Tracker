@@ -1,5 +1,5 @@
 #init will make boxes but you still need to let them know each of those inputs will be a 
-class Expense:
+class Expenses:
     def __init__(self, name, amount, category):
         self.name = name
         self.amount = amount
