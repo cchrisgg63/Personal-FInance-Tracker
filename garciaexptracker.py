@@ -4,9 +4,9 @@ from garciaexpenses import Expenses
 def main():
     print("Welcome to Garcias Expense Tracker")
         
-    expense = get_user_expense()  # make sure this function is defined
+    #expense = get_user_expense()  # make sure this function is defined
     expense_file_path = '/Users/admin/reactapp/ECGTech/Personal Finance Tracker/garciaexpenses.csv'
-    store_expenses_file(expense, expense_file_path)
+    #store_expenses_file(expense, expense_file_path)
     summarize_expenses(expense_file_path) 
     
     
@@ -33,7 +33,7 @@ def get_user_expense():
         ]
     #create a index for the list, good for visual effect
     for i, food in enumerate(expense_category):
-        print(f'{i+1}.{food}')
+        print(f'{i+1} , {food}')
     
     index = len(expense_category)
     
@@ -54,7 +54,7 @@ def get_user_expense():
 def store_expenses_file(expense: Expenses, expense_file_path): 
     with open('ECGTech/Personal Finance Tracker/garciaexpenses.csv', 'a') as file:
         print(f"Saving expense file: {expense} to {expense_file_path}\n")
-        file.write(f"{expense.name}. {expense.amount}, {expense.category}")
+        file.write(f" {expense.name} , {expense.amount} , {expense.category} ")
     return 
  
     
@@ -65,9 +65,22 @@ def store_expenses_file(expense: Expenses, expense_file_path):
 
 # Summarize all expenses
 def summarize_expenses(expense_file_path):
-    with open('ECGTech/Personal Finance Tracker/garciaexpenses.csv' 'r') as file:
-        contents = file.read()
-    print(f'Here are the currently stored items {contents}')
+    amount = []
+
+    with open('ECGTech/Personal Finance Tracker/garciaexpenses.csv','r') as file:
+        #remove the () in file because it overwrites anything if you add the parantheses
+        for line in file:
+            line = line.strip().split(',')
+            name = line[0].strip()
+            amount = float(line[1].strip())
+            category = line[2].strip()
+            total = sum(amount)
+        return print(f'Total Spent is ${total}')
+     
+        #I want the columns of the columns separated so I can take all the amount #'s and 
+        #add them all up to show the total expenditures
+        #then subtract it from the budget to see the remaining balance
+        #then divide the remaining balance to see what's the budget per day
    
 
 
