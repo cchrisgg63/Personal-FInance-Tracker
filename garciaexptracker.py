@@ -126,3 +126,6 @@ def green(text):
 # This will only run if the file is executed directly
 if __name__ == "__main__":
     main()
+
+    #Completed and submitted into github
+    
